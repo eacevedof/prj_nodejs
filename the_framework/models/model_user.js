@@ -1,3 +1,14 @@
+/**
+ * @author Eduardo Acevedo Farje.
+ * @link: www.eduardoaf.com
+ * @file model_user.js 
+ * @version: 1.0.0
+ * @name: ModelUser
+ * @date: 16-12-2014 16:52 (SPAIN)
+ * @observations: 
+ * @requires:
+ */
+
 var ModelUser = function(id,name)
 {
     var _id = id;

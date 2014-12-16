@@ -1,3 +1,13 @@
+/**
+ * @author Eduardo Acevedo Farje.
+ * @link: www.eduardoaf.com
+ * @file config.js 
+ * @version: 1.0.0
+ * @name: 
+ * @date: 16-12-2014 16:36 (SPAIN)
+ * @observations: core library.
+ * @requires:
+ */
 var Config = function()
 {
     var sIP = "127.0.0.1";

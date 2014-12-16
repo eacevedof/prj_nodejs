@@ -1,3 +1,14 @@
+/**
+ * @author Eduardo Acevedo Farje.
+ * @link: www.eduardoaf.com
+ * @file server.js 
+ * @version: 1.0.0
+ * @name: 
+ * @date: 16-12-2014 16:36 (SPAIN)
+ * @observations: core library.
+ * @requires:
+ */
+
 //IMPORTACIÓN DE MÓDULOS
 //propios
 var oUtils = require("./the_framework/utils");

@@ -1,0 +1,2 @@
+tasklist 
+cmd /c taskkill /F /IM node.exe 

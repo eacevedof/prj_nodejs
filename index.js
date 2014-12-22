@@ -2,7 +2,7 @@
  * @author Eduardo Acevedo Farje.
  * @link: www.eduardoaf.com
  * @file index.js 
- * @version: 1.0.3
+ * @version: 1.0.4
  * @name: 
  * @date: 22-12-2014 16:45 (SPAIN)
  * @observations: core library.
@@ -13,7 +13,7 @@
 //Main Node modules
 var oHttp = require("http");
 var oUrl = require("url");
-var oFs = require("fs")
+var oFs = require("fs");
 
 //propios
 var oUtils = require("./the_framework/components/component_utils");

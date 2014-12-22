@@ -1,0 +1,1 @@
+<b>Esto es un texto recuperado del archivo txtfileread.txt</b>

@@ -2,9 +2,9 @@
  * @author Eduardo Acevedo Farje.
  * @link: www.eduardoaf.com
  * @file index.js 
- * @version: 1.0.1
+ * @version: 1.0.2
  * @name: 
- * @date: 16-12-2014 17:01 (SPAIN)
+ * @date: 22-12-2014 16:45 (SPAIN)
  * @observations: core library.
  * @requires:
  */
@@ -14,12 +14,13 @@
 var oHttp = require("http");
 var oUrl = require("url");
 var oFs = require("fs")
+
+//propios
+var oUtils = require("./the_framework/components/component_utils");
+var oConfig = require("./the_framework/components/component_config");
 var oServer = require("./the_framework/components/component_server");
 
 
-//propios
-var oUtils = require("./the_framework/utils");
-var oConfig = require("./the_framework/config");
 var jnMimeType = {"js":"text/javascript","html":"text/html","css":"text/css","jpg":"image/jpg","gif":"image/gif","png":"image/png"};
 
 oUtils.bug(oServer);

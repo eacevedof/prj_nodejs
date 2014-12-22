@@ -1,7 +1,7 @@
 /**
  * @author Eduardo Acevedo Farje.
  * @link: www.eduardoaf.com
- * @file server.js 
+ * @file index.js 
  * @version: 1.0.1
  * @name: 
  * @date: 16-12-2014 17:01 (SPAIN)
@@ -13,11 +13,62 @@
 //Main Node modules
 var oHttp = require("http");
 var oUrl = require("url");
+var oFs = require("fs")
+var oServer = require("./the_framework/components/component_server");
+
 
 //propios
 var oUtils = require("./the_framework/utils");
 var oConfig = require("./the_framework/config");
-        
+var jnMimeType = {"js":"text/javascript","html":"text/html","css":"text/css","jpg":"image/jpg","gif":"image/gif","png":"image/png"};
+
+oUtils.bug(oServer);
+oServer.init(oHttp,oUrl,oFs)
+oUtils.bug(oServer);
+
+var serverHandler = function(oRequest,oResponse)
+{
+    var sPathName = (oUrl.parse(oRequest.url).pathname=="/")?"/index.html":oUrl.parse(oRequest.url).pathname;
+    var sPathFile = "examples"+sPathName;
+    
+    oUtils.bug(sPathFile,"pathfile");
+    var fn_filexists = function(isFile)
+    {
+        //si exise
+        if(isFile)
+        {
+            oFs.readFile(sPathFile,fn_onfileread)
+        }
+        else
+        {
+            oResponse.writeHead(404,"text/plain");
+            oResponse.end("Error 404. El enlace no existe o ha dejado de existir");
+        }
+    }
+
+    var fn_onfileread = function(isError,sFileContent)
+    {
+        if(isError)
+        {
+            oResponse.writeHead(500,"text/plain");
+            oResponse.end("Error interno.");
+        }
+        else
+        {
+            var sExtension = sPathFile.split(".").pop();
+            var sFileMime = jnMimeType[sExtension];
+            oResponse.writeHead(200,{"Content-Type":sFileMime});
+            oResponse.end(sFileContent);
+        }
+    }
+    
+    oFs.exists(sPathFile,fn_filexists);
+}
+//oHttp.createServer(serverHandler).listen(4000,"127.0.0.1");
+console.log("processid:"+process.pid);
+console.log("Server running at: "+oConfig.get_ip()+":"+oConfig.get_port());
+
+
 var fn_ongeterror = function(oError)
 {
     oUtils.bug("There was an error: "+oError.message);
@@ -47,7 +98,5 @@ var fn_onrequest = function(oRequest,oResponse)
 };
 
 //En cada petición
-oHttp.createServer(fn_onrequest).listen(oConfig.get_port(),oConfig.get_ip());
+//oHttp.createServer(fn_onrequest).listen(oConfig.get_port(),oConfig.get_ip());
 
-console.log("processid:"+process.pid);
-console.log("Server running at: "+oConfig.get_ip()+":"+oConfig.get_port());

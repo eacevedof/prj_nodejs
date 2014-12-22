@@ -2,14 +2,14 @@
  * @author Eduardo Acevedo Farje.
  * @link: www.eduardoaf.com
  * @file component_server.js 
- * @version: 1.0.0
+ * @version: 1.0.1
  * @name: ComponentServer
- * @date: 19-12-2014 15:50 (SPAIN)
+ * @date: 22-12-2014 16:46 (SPAIN)
  * @observations: core library.
  * @requires:
  */
 
-function ComponentServer()
+var ComponentServer = function()
 {
     //Demo url llamada: http://127.0.0.1:4000/txtfileread.txt
     var jnMimeType = {"js":"text/javascript","html":"text/html","css":"text/css","jpg":"image/jpg","gif":"image/gif","png":"image/png"};

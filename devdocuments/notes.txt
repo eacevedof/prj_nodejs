@@ -12,3 +12,7 @@
 
 tasklist 
 cmd /c taskkill /F /IM node.exe 
+
+MAC
+cd /users/ioedu/desktop/my_things/projects/nodejs/prj_nodejs
+node index.js

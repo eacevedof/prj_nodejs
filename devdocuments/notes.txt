@@ -22,6 +22,7 @@ node index.js
  * @name: 
  * @date: 16-12-2014 16:36 (SPAIN)
  * @observations: core library.
+ * @repo: https://github.com/eacevedof/prj_nodejs/
  * @requires:
  */
 

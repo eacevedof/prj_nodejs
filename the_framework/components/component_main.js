@@ -2,10 +2,11 @@
  * @author Eduardo Acevedo Farje.
  * @link: www.eduardoaf.com
  * @file component_main.js 
- * @version: 1.0.0
+ * @version: 1.0.1
  * @name: ComponentMain
- * @date: 27-12-2014 20:27 (SPAIN)
- * @observations: core library.
+ * @date: 27-12-2014 21:00 (SPAIN)
+ * @observations: core library
+ *      A futuro estas funciones se deberán migrar a TheFramework
  * @repo: https://github.com/eacevedof/prj_nodejs/
  * @requires:
  */

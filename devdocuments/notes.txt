@@ -1,3 +1,19 @@
+//===========================
+//        SETTERS
+//===========================
+this.set_ip = function(sValue){sIp = sValue;}
+this.set_port = function(iValue){iPort = iValue;}
+
+//===========================
+//        GETTERS
+//===========================    
+this.get_ip = function(){return sIp;}
+this.get_port = function(){return iPort;}
+
+MAC
+cd /users/ioedu/desktop/my_things/projects/nodejs/prj_nodejs
+node index.js
+
 /**
  * @author Eduardo Acevedo Farje.
  * @link: www.eduardoaf.com
@@ -9,10 +25,5 @@
  * @requires:
  */
 
-
 tasklist 
 cmd /c taskkill /F /IM node.exe 
-
-MAC
-cd /users/ioedu/desktop/my_things/projects/nodejs/prj_nodejs
-node index.js

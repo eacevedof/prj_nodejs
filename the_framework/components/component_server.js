@@ -2,15 +2,18 @@
  * @author Eduardo Acevedo Farje.
  * @link: www.eduardoaf.com
  * @file component_server.js 
- * @version: 1.0.2
+ * @version: 1.0.3
  * @name: ComponentServer
- * @date: 24-12-2014 08:55 (SPAIN)
+ * @date: 27-12-2014 12:59 (SPAIN)
  * @observations: core library.
+ *  fn_on<name> el prefijo "indica" que es una funcion de gestión de evento que necesita como parametro la función que le llama.
+ *  fn_<name> son funciones propias que optimizan la rescritura de código. Funciones de toda la vida.
  * @requires:
  */
 
 var ComponentServer = function()
 {
+    //Uso este tutorial como guia: http://fernando-gaitan.com.ar/introduccion-a-node-js-parte-3-crear-modulos/
     //Demo url llamada: http://127.0.0.1:4000/txtfileread.txt
     var jnMimeType = {"js":"text/javascript","html":"text/html","css":"text/css","jpg":"image/jpg","gif":"image/gif","png":"image/png"};
     
@@ -38,6 +41,8 @@ var ComponentServer = function()
             //si existe
             if(isFile)
             {
+                //Pasa la ruta del archivo a tratar y la función que recibirá los parámetros generados
+                //isError,sFileContent. fn_onreadfile es el handler que a su vez llama al 
                 oFs.readFile(sPathFile,fn_onreadfile);                
             }
             else
@@ -61,6 +66,7 @@ var ComponentServer = function()
         return sPathFile;
     }//get_pathfile()
     
+    //Especie de constructor
     //Los argumentos de esta función se pasan desde index.js
     this.init = function(oHttp,oUrl,oFs)
     {

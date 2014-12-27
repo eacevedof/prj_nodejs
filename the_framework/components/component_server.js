@@ -2,12 +2,13 @@
  * @author Eduardo Acevedo Farje.
  * @link: www.eduardoaf.com
  * @file component_server.js 
- * @version: 1.0.5
+ * @version: 1.0.6
  * @name: ComponentServer
  * @date: 27-12-2014 13:56 (SPAIN)
  * @observations: core library.
  *  fn_on<name> el prefijo "indica" que es una funcion de gestión de evento que necesita como parametro la función que le llama.
  *  fn_<name> son funciones propias que optimizan la rescritura de código. Funciones de toda la vida.
+ * @repo: https://github.com/eacevedof/prj_nodejs/
  * @requires:
  */
 
@@ -71,6 +72,7 @@ var ComponentServer = function()
         return sPathFile;
     }//get_pathfile()
 
+    //Funcion a rescribir si es necesario
     var fn_oncreateserver = function(oRequest,oResponse)
     {
         var sPathFile = get_pathfile(oRequest,oUrl); 
@@ -127,4 +129,5 @@ var ComponentServer = function()
     
 }//ComponentServer
 
-module.exports = new ComponentServer();
+var oComponentServer = new ComponentServer();
+module.exports = oComponentServer;

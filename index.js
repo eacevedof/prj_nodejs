@@ -7,6 +7,7 @@
  * @date: 27-12-2014 14:22 (SPAIN)
  * @observations: core library.
  *      Archivo principal. Equivalente a index.html
+ * @repo: https://github.com/eacevedof/prj_nodejs/
  * @requires:
  */
 
@@ -21,9 +22,10 @@ var oUrl = require("url");
 //var oFs = require("fs");
 
 //propios
-var oUtils = require("./the_framework/components/component_utils");
+global.oUtils = require("./the_framework/components/component_utils");
 var oConfig = require("./the_framework/components/component_config");
 var oServer = require("./the_framework/components/component_server");
+var oHelperSelect = require("./the_framework/helpers/helper_select");
 
 //Configuro mi objeto servidor
 //Objetos iniciales
@@ -46,10 +48,16 @@ function fn_oncreatesever(oRequest,oResponse)
     _GET = oUrl.parse(oRequest.url,true).query;
     oUtils.bug(_GET.module,"GET[module]");
     oUtils.bug(_GET.id,"GET[id]");
-    var sParams = _GET.module +", "+ _GET.id+", "+ _GET.id_foreign;
+    var sHtml = _GET.module +", "+ _GET.id+", "+ _GET.id_foreign;
 
     oResponse.writeHead(200, {"Content-Type":"text/html"});
-    oResponse.end(sParams);
+    
+    var arOptions = [{"key1":"value1"},{"key2":"value2"},{"key3":"value3"}];
+    oHelperSelect.set_id("UnId");
+    oHelperSelect.set_name("aName");
+    oHelperSelect.set_options(arOptions);
+    sHtml += oHelperSelect.get_html();
+    oResponse.end(sHtml);
 }
 
 oServer.set_oncreateserver(fn_oncreatesever);

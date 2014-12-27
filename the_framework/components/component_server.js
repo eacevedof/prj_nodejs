@@ -2,9 +2,9 @@
  * @author Eduardo Acevedo Farje.
  * @link: www.eduardoaf.com
  * @file component_server.js 
- * @version: 1.0.4
+ * @version: 1.0.5
  * @name: ComponentServer
- * @date: 27-12-2014 13:27 (SPAIN)
+ * @date: 27-12-2014 13:56 (SPAIN)
  * @observations: core library.
  *  fn_on<name> el prefijo "indica" que es una funcion de gestión de evento que necesita como parametro la función que le llama.
  *  fn_<name> son funciones propias que optimizan la rescritura de código. Funciones de toda la vida.
@@ -18,6 +18,9 @@ var ComponentServer = function()
     var jnMimeType = {"js":"text/javascript","html":"text/html","css":"text/css","jpg":"image/jpg","gif":"image/gif","png":"image/png"};
     var sIp = "127.0.0.1";
     var iPort = 4000;
+    var oHttp = null;
+    var oUrl = null; //instancia de módulo url
+    var oFs = null; //instancia de módulo file
     
     //Funcion principal que lee el archivo. Tiene dos funciones que llaman al callback
     //(callback) fn_resphandler((iReqError,sFileContent)) Trata los posibles errores de lectura y envia un mensaje por pantalla
@@ -67,49 +70,54 @@ var ComponentServer = function()
         var sPathFile = "examples"+sPathName;
         return sPathFile;
     }//get_pathfile()
-    
+
+    var fn_oncreateserver = function(oRequest,oResponse)
+    {
+        var sPathFile = get_pathfile(oRequest,oUrl); 
+        //funcion callback
+        //Esta funcion se llamará despues de comprobar la existencia del archivo en la ruta proporcionada
+        //los argumentos se generan manualmente en las funciones internas de fn_readfile
+        var fn_responsehandler = function(iReqError,sFileContent)
+        {
+            if(iReqError===404)
+            {
+                oResponse.writeHead(iReqError,"text/plain");
+                oResponse.end("Error 404.  El enlace no existe o ha dejado de existir");
+            }
+            else if(iReqError===500)
+            {
+                oResponse.writeHead(iReqError,"text/plain");
+                oResponse.end("Error interno.");
+            }
+            else
+            {
+                var sFileExt = sPathFile.split(".").pop();
+                var sMimeType = jnMimeType[sFileExt];
+                oResponse.writeHead(iReqError,{"Content-Type":sMimeType});
+                oResponse.end(sFileContent);
+            }
+        }//fn_responsehandler
+
+        fn_readfile(oFs,sPathFile,fn_responsehandler);
+    }//fn_oncreateserver
+        
     //Especie de constructor
     //Los argumentos de esta función se pasan desde index.js
-    this.init = function(oHttp,oUrl,oFs)
+    this.init = function()
     {
-        var fn_oncreateserver = function(oRequest,oResponse)
-        {
-            var sPathFile = get_pathfile(oRequest,oUrl); 
-            //funcion callback
-            //Esta funcion se llamará despues de comprobar la existencia del archivo en la ruta proporcionada
-            //los argumentos se generan manualmente en las funciones internas de fn_readfile
-            var fn_responsehandler = function(iReqError,sFileContent)
-            {
-                if(iReqError===404)
-                {
-                    oResponse.writeHead(iReqError,"text/plain");
-                    oResponse.end("Error 404.  El enlace no existe o ha dejado de existir");
-                }
-                else if(iReqError===500)
-                {
-                    oResponse.writeHead(iReqError,"text/plain");
-                    oResponse.end("Error interno.");
-                }
-                else
-                {
-                    var sFileExt = sPathFile.split(".").pop();
-                    var sMimeType = jnMimeType[sFileExt];
-                    oResponse.writeHead(iReqError,{"Content-Type":sMimeType});
-                    oResponse.end(sFileContent);
-                }
-            }//fn_responsehandler
-            
-            fn_readfile(oFs,sPathFile,fn_responsehandler);
-        }//fn_oncreateserver
-        
         oHttp.createServer(fn_oncreateserver).listen(iPort,sIp);
     }//init()
     
     //===========================
     //        SETTERS
     //===========================
+    this.set_objhttp = function(oValue){oHttp = oValue;}
+    this.set_objurl = function(oValue){oUrl = oValue;}
+    this.set_objfs = function(oValue){oFs = oValue;}
+    
     this.set_ip = function(sValue){sIp = sValue;}
     this.set_port = function(iValue){iPort = iValue;}
+    this.set_oncreateserver = function(fnValue){fn_oncreateserver = fnValue;}
     
     //===========================
     //        GETTERS

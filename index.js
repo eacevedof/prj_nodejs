@@ -2,9 +2,9 @@
  * @author Eduardo Acevedo Farje.
  * @link: www.eduardoaf.com
  * @file index.js 
- * @version: 1.0.6
+ * @version: 1.0.7
  * @name: 
- * @date: 27-12-2014 13:51 (SPAIN)
+ * @date: 27-12-2014 14:07 (SPAIN)
  * @observations: core library.
  *      Archivo principal. Equivalente a index.html
  * @requires:
@@ -29,6 +29,17 @@ oServer.set_objfs(oFs);
 //datos de escucha
 oServer.set_ip(oConfig.get_ip());
 oServer.set_port(oConfig.get_port());
+
+//Función que lee parametros get
+function fn_oncreatesever(oRequest,oResponse)
+{ 
+   var oQuery = oUrl.parse(oRequest.url,true).query;
+   var sModule = oQuery.module;
+   oResponse.writeHead(200, {'Content-Type': 'text/html'});
+   oResponse.end(sModule);
+}
+
+oServer.set_oncreateserver(fn_oncreatesever);
 //inicializa el servidor
 oServer.init();
 

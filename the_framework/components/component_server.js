@@ -2,9 +2,9 @@
  * @author Eduardo Acevedo Farje.
  * @link: www.eduardoaf.com
  * @file component_server.js 
- * @version: 1.0.3
+ * @version: 1.0.4
  * @name: ComponentServer
- * @date: 27-12-2014 12:59 (SPAIN)
+ * @date: 27-12-2014 13:27 (SPAIN)
  * @observations: core library.
  *  fn_on<name> el prefijo "indica" que es una funcion de gestión de evento que necesita como parametro la función que le llama.
  *  fn_<name> son funciones propias que optimizan la rescritura de código. Funciones de toda la vida.
@@ -16,6 +16,8 @@ var ComponentServer = function()
     //Uso este tutorial como guia: http://fernando-gaitan.com.ar/introduccion-a-node-js-parte-3-crear-modulos/
     //Demo url llamada: http://127.0.0.1:4000/txtfileread.txt
     var jnMimeType = {"js":"text/javascript","html":"text/html","css":"text/css","jpg":"image/jpg","gif":"image/gif","png":"image/png"};
+    var sIp = "127.0.0.1";
+    var iPort = 4000;
     
     //Funcion principal que lee el archivo. Tiene dos funciones que llaman al callback
     //(callback) fn_resphandler((iReqError,sFileContent)) Trata los posibles errores de lectura y envia un mensaje por pantalla
@@ -100,8 +102,20 @@ var ComponentServer = function()
             fn_readfile(oFs,sPathFile,fn_responsehandler);
         }//fn_oncreateserver
         
-        oHttp.createServer(fn_oncreateserver).listen(4000,"127.0.0.1");
+        oHttp.createServer(fn_oncreateserver).listen(iPort,sIp);
     }//init()
+    
+    //===========================
+    //        SETTERS
+    //===========================
+    this.set_ip = function(sValue){sIp = sValue;}
+    this.set_port = function(iValue){iPort = iValue;}
+    
+    //===========================
+    //        GETTERS
+    //===========================    
+    this.get_ip = function(){return sIp;}
+    this.get_port = function(){return iPort;}
     
 }//ComponentServer
 

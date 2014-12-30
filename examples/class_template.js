@@ -1,14 +1,15 @@
 /**
  * @author Eduardo Acevedo Farje.
  * @link: www.eduardoaf.com
- * @file component_utils.js 
+ * @file class_template.js 
  * @version: 1.0.0
- * @name: HelperSelect
+ * @name: Template
  * @date: 27-12-2014 15:02 (SPAIN)
- * @observations: core library.
+ * @observations: 
+ * @repo: https://github.com/eacevedof/prj_nodejs/
  * @requires:
  */
-var HelperSelect = function()
+var Template = function()
 {
     var sId = "";
     var sName = "";
@@ -31,5 +32,5 @@ var HelperSelect = function()
     this.get_name = function(){return iPort;}    
 }
 
-var oHelper = new HelperSelect();
-module.exports = oHelper;
+var oExport = new Template();
+module.exports = oExport;

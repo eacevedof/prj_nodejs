@@ -1,30 +1,9 @@
-//===========================
-//        SETTERS
-//===========================
-this.set_ip = function(sValue){sIp = sValue;}
-this.set_port = function(iValue){iPort = iValue;}
-
-//===========================
-//        GETTERS
-//===========================    
-this.get_ip = function(){return sIp;}
-this.get_port = function(){return iPort;}
+Migración desde:
+https://github.com/eacevedof/the_framework
 
 MAC
 cd /users/ioedu/desktop/my_things/projects/nodejs/prj_nodejs
 node index.js
-
-/**
- * @author Eduardo Acevedo Farje.
- * @link: www.eduardoaf.com
- * @file server.js 
- * @version: 1.0.0
- * @name: 
- * @date: 16-12-2014 16:36 (SPAIN)
- * @observations: core library.
- * @repo: https://github.com/eacevedof/prj_nodejs/
- * @requires:
- */
 
 tasklist 
 cmd /c taskkill /F /IM node.exe 

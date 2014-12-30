@@ -2,9 +2,9 @@
  * @author Eduardo Acevedo Farje.
  * @link: www.eduardoaf.com
  * @file component_server.js 
- * @version: 1.0.6
+ * @version: 1.0.7
  * @name: ComponentServer
- * @date: 27-12-2014 13:56 (SPAIN)
+ * @date: 30-12-2014 09:19 (SPAIN)
  * @observations: core library.
  *  fn_on<name> el prefijo "indica" que es una funcion de gestión de evento que necesita como parametro la función que le llama.
  *  fn_<name> son funciones propias que optimizan la rescritura de código. Funciones de toda la vida.
@@ -129,5 +129,5 @@ var ComponentServer = function()
     
 }//ComponentServer
 
-var oComponentServer = new ComponentServer();
-module.exports = oComponentServer;
+var oExport = new ComponentServer();
+module.exports = oExport;

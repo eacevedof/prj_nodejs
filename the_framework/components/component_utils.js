@@ -2,10 +2,11 @@
  * @author Eduardo Acevedo Farje.
  * @link: www.eduardoaf.com
  * @file component_utils.js 
- * @version: 1.0.2
+ * @version: 1.0.3
  * @name: ComponentUtils
  * @date: 19-12-2014 15:46 (SPAIN)
  * @observations: core library.
+ * @repo: https://github.com/eacevedof/prj_nodejs/
  * @requires:
  */
 var ComponentUtils = 
@@ -24,6 +25,7 @@ var ComponentUtils =
             process.exit(1);
         //process.kill(pid, 0) 
     }
-};
+};//ComponentUtils
 
-module.exports = ComponentUtils;
+var oExport = new ComponentUtils();
+module.exports = oExport;

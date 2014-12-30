@@ -2,9 +2,9 @@
  * @author Eduardo Acevedo Farje.
  * @link: www.eduardoaf.com
  * @file component_main.js 
- * @version: 1.0.1
+ * @version: 1.0.2
  * @name: ComponentMain
- * @date: 27-12-2014 21:00 (SPAIN)
+ * @date: 30-12-2014 09:19 (SPAIN)
  * @observations: core library
  *      A futuro estas funciones se deberán migrar a TheFramework
  * @repo: https://github.com/eacevedof/prj_nodejs/
@@ -80,5 +80,5 @@ var ComponentMain = function()
     
 }//ComponentMain
 
-var oComponentMain = new ComponentMain();
-module.exports = oComponentMain;
+var oExport = new ComponentMain();
+module.exports = oExport;

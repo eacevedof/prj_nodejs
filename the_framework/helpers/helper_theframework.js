@@ -2,9 +2,9 @@
  * @author Eduardo Acevedo Farje.
  * @link: www.eduardoaf.com
  * @file helper_theframework.js 
- * @version: 1.0.0
+ * @version: 1.0.1
  * @name: HelperTheframework
- * @date: 29-12-2014 12:33 (SPAIN)
+ * @date: 30-12-2014 09:33 (SPAIN)
  * @observations: core library.
  * @repo: https://github.com/eacevedof/prj_nodejs/
  * @requires:
@@ -102,5 +102,5 @@ var HelperTheframework = function()
     this.get_name = function(){return sName;}    
 }
 
-var oHelper = new HelperTheframework();
-module.exports = oHelper;
+var oExport = new HelperTheframework();
+module.exports = oExport;

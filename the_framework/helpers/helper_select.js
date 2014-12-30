@@ -1,7 +1,7 @@
 /**
  * @author Eduardo Acevedo Farje.
  * @link: www.eduardoaf.com
- * @file component_utils.js 
+ * @file helper_select.js 
  * @version: 1.0.1
  * @name: HelperSelect
  * @date: 30-12-2014 09:33 (SPAIN)

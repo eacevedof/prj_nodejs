@@ -3,7 +3,7 @@
  * @link: www.eduardoaf.com
  * @file component_config.js 
  * @version: 1.0.3
- * @name: 
+ * @name: ComponentConfig
  * @date: 30-12-2014 09:17 (SPAIN)
  * @observations: core library.
  * @repo: https://github.com/eacevedof/prj_nodejs/

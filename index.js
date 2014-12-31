@@ -2,9 +2,9 @@
  * @author Eduardo Acevedo Farje.
  * @link: www.eduardoaf.com
  * @file index.js 
- * @version: 1.0.9
+ * @version: 1.0.10
  * @name: 
- * @date: 27-12-2014 14:22 (SPAIN)
+ * @date: 31-12-2014 09:51 (SPAIN)
  * @observations: core library.
  *      Archivo principal. Equivalente a index.html
  * @repo: https://github.com/eacevedof/prj_nodejs/
@@ -26,7 +26,14 @@ global.oUtils = require("./the_framework/components/component_utils");
 var oConfig = require("./the_framework/components/component_config");
 var oServer = require("./the_framework/components/component_server");
 var oHelperSelect = require("./the_framework/helpers/helper_select");
+//var otf= require("./the_framework/main/the_framework");
+var oMainHelper = require("./the_framework/main/helper_theframework");
 
+oMainHelper.set_prop1(88);
+oMainHelper.set_hprop1(99);
+oUtils.bug(oMainHelper.get_prop1(),"get_prop1");
+oUtils.bug(oMainHelper.get_hprop1(),"get_hprop1");
+oUtils.bugobj(oMainHelper,"mainhelper");
 //Configuro mi objeto servidor
 //Objetos iniciales
 oServer.set_objhttp(oHttp);

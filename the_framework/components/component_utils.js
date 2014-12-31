@@ -24,7 +24,20 @@ var ComponentUtils =
         if(isDie)
             process.exit(1);
         //process.kill(pid, 0) 
+    },
+    
+    bugobj : function(oAnyObject,sObjectName)
+    {
+        var sReturn = "";
+        var sObjectName = sObjectName || "any";
+        for(var sProperty in oAnyObject)
+            //if(oAnyObject.hasOwnProperty(sProperty)) 
+                sReturn += sObjectName + "." + sProperty + " = " + oAnyObject[sProperty] + "\n";
+
+        console.log(sReturn);
+        //return sReturn;
     }
+    
 };//ComponentUtils
 
 var oExport = ComponentUtils;

@@ -2,7 +2,7 @@
  * @author Eduardo Acevedo Farje.
  * @link: www.eduardoaf.com
  * @file index.js 
- * @version: 1.0.10
+ * @version: 1.0.11
  * @name: 
  * @date: 31-12-2014 09:51 (SPAIN)
  * @observations: core library.
@@ -27,13 +27,10 @@ var oConfig = require("./the_framework/components/component_config");
 var oServer = require("./the_framework/components/component_server");
 var oHelperSelect = require("./the_framework/helpers/helper_select");
 //var otf= require("./the_framework/main/the_framework");
-var oMainHelper = require("./the_framework/main/helper_theframework");
+var oMainHelper = require("./the_framework/main/theframework_helper");
+var oMainView = require("./the_framework/main/theframework_view");
 
-oMainHelper.set_prop1(88);
-oMainHelper.set_hprop1(99);
-oUtils.bug(oMainHelper.get_prop1(),"get_prop1");
-oUtils.bug(oMainHelper.get_hprop1(),"get_hprop1");
-oUtils.bugobj(oMainHelper,"mainhelper");
+oUtils.bugobj(oMainView,"oMainView");
 //Configuro mi objeto servidor
 //Objetos iniciales
 oServer.set_objhttp(oHttp);
@@ -53,10 +50,8 @@ oServer.set_port(oConfig.get_port());
 function fn_oncreatesever(oRequest,oResponse)
 { 
     _GET = oUrl.parse(oRequest.url,true).query;
-    oUtils.bug(_GET.module,"GET[module]");
-    oUtils.bug(_GET.id,"GET[id]");
+    oUtils.bugobj(_GET,"_GET");
     var sHtml = _GET.module +", "+ _GET.id+", "+ _GET.id_foreign;
-
     oResponse.writeHead(200, {"Content-Type":"text/html"});
     
     var arOptions = [{"key1":"value1"},{"key2":"value2"},{"key3":"value3"}];
@@ -71,5 +66,5 @@ oServer.set_oncreateserver(fn_oncreatesever);
 //inicializa el servidor
 oServer.init();
 
-console.log(":0) Your NODE server is running at: "+oConfig.get_ip()+":"+oConfig.get_port());
+console.log(":0) Your NODE server is running at: "+oServer.get_ip()+":"+oServer.get_port());
 console.log("Using processid:"+process.pid);

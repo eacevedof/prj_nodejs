@@ -2,7 +2,7 @@
  * @author Eduardo Acevedo Farje.
  * @link: www.eduardoaf.com
  * @file component_utils.js 
- * @version: 1.0.3
+ * @version: 1.0.4
  * @name: ComponentUtils
  * @date: 19-12-2014 15:46 (SPAIN)
  * @observations: core library.
@@ -27,5 +27,5 @@ var ComponentUtils =
     }
 };//ComponentUtils
 
-var oExport = new ComponentUtils();
+var oExport = ComponentUtils;
 module.exports = oExport;

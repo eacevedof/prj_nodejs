@@ -26,6 +26,7 @@ global.oUtils = require("./the_framework/components/component_utils");
 var oConfig = require("./the_framework/components/component_config");
 var oServer = require("./the_framework/components/component_server");
 var oHelperSelect = require("./the_framework/helpers/helper_select");
+var oPage = require("./the_framework/views/theapplication_page");
 //var otf= require("./the_framework/main/the_framework");
 var oMainHelper = require("./the_framework/main/theframework_helper");
 var oMainView = require("./the_framework/main/theframework_view");
@@ -59,7 +60,8 @@ function fn_oncreatesever(oRequest,oResponse)
     oHelperSelect.set_name("aName");
     oHelperSelect.set_options(arOptions);
     sHtml += oHelperSelect.get_html();
-    oResponse.end(sHtml);
+    oPage.set_body(oHelperSelect);
+    oResponse.end(oPage.get_html());
 }
 
 oServer.set_oncreateserver(fn_oncreatesever);

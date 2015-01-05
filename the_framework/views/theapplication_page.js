@@ -46,5 +46,5 @@ var TheApplicationPage = function()
     
 }//TheApplicationPage
 
-var oExport = new TheApplicationPage();
+var oExport = TheApplicationPage;
 module.exports = oExport;

@@ -7,15 +7,16 @@
  * @date: 01-01-2015 10:37 (SPAIN)
  * @observations: 
  *      https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Inheritance_and_the_prototype_chain
+ *      http://javascriptissexy.com/oop-in-javascript-what-you-need-to-know/
  * @repo: https://github.com/eacevedof/prj_nodejs/
  * @requires:
  */
 var TheApplicationPageHead = function()
 {
-    var arMetas = [];//array {"key1":"value","htmlcomment"} htmlcomment indica que se ha de crear ese meta como mentario
-    var arLinks = [];
-    var arScripts = [];
-    var sTitle = "";
+    this.arMetas = [];//array {"key1":"value","htmlcomment"} htmlcomment indica que se ha de crear ese meta como mentario
+    this.arLinks = [];
+    this.arScripts = [];
+    this.sTitle = "";
 
     this.init = function(){;}
 
@@ -63,14 +64,14 @@ var TheApplicationPageHead = function()
     var build_metas = function()
     {
         var sHtmlToReturn = "";
-        if(!is_empty(arMetas))
+        if(!is_empty(this.arMetas))
         {
-            var iObjects = arMetas.length;
+            var iObjects = this.arMetas.length;
             var i=0;
             var jnTemp = {};
             for(i=0; i<iObjects; i++)
             {
-                jnTemp = arMetas[i];
+                jnTemp = this.arMetas[i];
                 var sAttribs = build_properties(jnTemp);
                 sHtmlToReturn += build_tag("meta",sAttribs);
             }//for arMetas
@@ -93,7 +94,7 @@ var TheApplicationPageHead = function()
     var build_title = function()
     {
         var sHtmlToReturn = "<title>\n";
-        if(sTitle!=="") sHtmlToReturn += sTitle;
+        if(this.sTitle!=="") sHtmlToReturn += this.sTitle;
         sHtmlToReturn += "</title>\n";
         return sHtmlToReturn;        
     }
@@ -142,24 +143,44 @@ var TheApplicationPageHead = function()
         return sHtmlToReturn;
     }//get_html
 
-    //===========================
-    //        SETTERS
-    //===========================
-    this.add_meta = function(jnValue){arMetas.push(jnValue);}
-    this.set_metas = function(arValue){arMetas = arValue;}
-    
-    this.add_link = function(jnValue){arLinks.push(jnValue);}
-    this.set_links = function(arValue){arLinks = arValue;}
-    
-    this.add_script = function(jnValue){arScripts.push(jnValue);}
-    this.set_scripts = function(arValue){arScripts = arValue;}    
-    
-    this.set_title = function(sValue){sTitle=sValue;}
-    //===========================
-    //        GETTERS
-    //===========================    
+
     
 }//TheApplicationPageHead
 
+//Herencia
+//Atributo: oInstance.prototype = new Class();
+
+//Propiedad: oInstance.prototype.propiedad_1 = anyobject;
+
+
+//The one disadvantage of overwriting the prototype is that the constructor property no longer points to the prototype
+//, so we have to set it manually. Hence this line:
+//The prototype property is used primarily for inheritance; you add methods and properties on a function’s prototype property 
+//to make those methods and properties available to instances of that function.
+
+//Con prototype (atributos globales) se hace accesible los atributos de la clase inical. Extiendo la funcionalidad
+TheApplicationPageHead.prototype =
+{
+    //this constructor property is simply a property (like any variable) that holds or points to the constructor of the object.
+    constructor:TheApplicationPageHead,
+    //===========================
+    //        SETTERS
+    //===========================
+    add_meta : function(jnValue){this.arMetas.push(jnValue);}
+    ,set_metas : function(arValue){this.arMetas = arValue;}
+    
+    ,add_link : function(jnValue){this.arLinks.push(jnValue);}
+    ,set_links : function(arValue){this.arLinks = arValue;}
+    
+    ,add_script : function(jnValue){this.arScripts.push(jnValue);}
+    ,set_scripts : function(arValue){this.arScripts = arValue;}    
+    
+    ,set_title : function(sValue){this.sTitle=sValue;}
+    //===========================
+    //        GETTERS
+    //===========================         
+}
+//All objects created with object literals and with the Object constructor inherits from Object.prototype
+//Object.prototype is the prototype attribute (or the prototype object) of all objects created with new Object () or with {}. 
 var oExport = new TheApplicationPageHead();
 module.exports = oExport;

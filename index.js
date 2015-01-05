@@ -27,6 +27,10 @@ var oConfig = require("./the_framework/components/component_config");
 var oServer = require("./the_framework/components/component_server");
 var oHelperSelect = require("./the_framework/helpers/helper_select");
 var oPage = require("./the_framework/views/theapplication_page");
+//prueba sin constructor.
+//@TODO Falta hacer prueba de funciton a(){} var b= new a(); var c=new a(); var b = a; var c=a; cual es la diferencia?
+//creo que si no aplico el operador new todas las variables apuntan a "a".  Si cambio algo en c tambien se cambia en "a"
+oPage = new oPage();
 var oPageHead  = require("./the_framework/views/theapplication_page_head");
 //var otf= require("./the_framework/main/the_framework");
 var oMainHelper = require("./the_framework/main/theframework_helper");

@@ -14,6 +14,8 @@ var ComponentConfig = function()
     var sIP = "127.0.0.1";
     var iPort = 4000;
     
+    sIP = process.env.IP;
+    iPort = process.env.PORT;
     //GETS
     this.get_ip = function(){return sIP;}
     this.get_port = function(){return iPort;}

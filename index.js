@@ -2,9 +2,9 @@
  * @author Eduardo Acevedo Farje.
  * @link: www.eduardoaf.com
  * @file index.js 
- * @version: 1.0.11
+ * @version: 1.0.12
  * @name: 
- * @date: 31-12-2014 09:51 (SPAIN)
+ * @date: 05-04-2015 14:38 (SPAIN)
  * @observations: core library.
  *      Archivo principal. Equivalente a index.html
  * @repo: https://github.com/eacevedof/prj_nodejs/
@@ -25,6 +25,7 @@ var oUrl = require("url");
 global.oUtils = require("./the_framework/components/component_utils");
 var oConfig = require("./the_framework/components/component_config");
 var oServer = require("./the_framework/components/component_server");
+var oDataBase = require("./the_framework/components/component_database");
 var oHelperSelect = require("./the_framework/helpers/helper_select");
 var oPage = require("./the_framework/views/theapplication_page");
 //prueba sin constructor.
@@ -35,6 +36,14 @@ var oPageHead  = require("./the_framework/views/theapplication_page_head");
 //var otf= require("./the_framework/main/the_framework");
 var oMainHelper = require("./the_framework/main/theframework_helper");
 var oMainView = require("./the_framework/main/theframework_view");
+var oUser = require("./the_framework/models/model_user");
+
+//Conecta a mongodb de MongoLab. Tendrá el metodo .query() y metodos CRUD
+console.log("connect()");
+oDataBase.connect();
+oUser.set_database(oDataBase);
+console.log("user.init()");
+oUser.init();
 
 oUtils.bugobj(oMainView,"oMainView");
 //Configuro mi objeto servidor

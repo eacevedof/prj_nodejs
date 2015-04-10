@@ -2,20 +2,21 @@
  * @author Eduardo Acevedo Farje.
  * @link: www.eduardoaf.com
  * @file component_config.js 
- * @version: 1.0.3
+ * @version: 1.0.4
  * @name: ComponentConfig
- * @date: 30-12-2014 09:17 (SPAIN)
+ * @date: 10-04-2015 10:59 (SPAIN)
  * @observations: core library.
  * @repo: https://github.com/eacevedof/prj_nodejs/
  * @requires:
  */
 var ComponentConfig = function()
 {
-    var sIP = "127.0.0.1";
-    var iPort = 4000;
+    var sIP = process.env.IP || "127.0.0.1";
+    var iPort = process.env.PORT || 4000;
     
-    sIP = process.env.IP;
-    iPort = process.env.PORT;
+    //sIP = process.env.IP;
+    //iPort = process.env.PORT;
+    
     //GETS
     this.get_ip = function(){return sIP;}
     this.get_port = function(){return iPort;}
